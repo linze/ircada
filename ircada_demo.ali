@@ -1,0 +1,99 @@
+V "GNAT Lib v4.4"
+M P W=b
+A -gnatA
+P SS ZX
+R nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnvnnvnnnnnnnnnnnnnnnnvnnnnnnnnnnnnnnnnnn
+
+U ircada_demo%b		ircada_demo.adb		183168ac NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ircada%s		ircada.adb		ircada.ali
+W system%s		system.ads		system.ali
+W system.finalization_implementation%s  s-finimp.adb  s-finimp.ali
+W system.finalization_root%s  s-finroo.adb	s-finroo.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20070406091342 9c7dd3ea
+D a-charac.ads		20070912115821 506ce725
+D a-chlat1.ads		20070912115821 e9ee6d0a
+D a-except.ads		20090409232307 b54b55de
+D a-finali.ads		20090409232307 9eaacebd
+D a-filico.ads		20090409232307 9299732a
+D a-reatim.ads		20090409232307 7c462ab4
+D a-stream.ads		20090409232307 34aca5be
+D a-string.ads		20070406091342 87b4230b
+D a-strmap.ads		20090409232307 5253a637
+D a-strunb.ads		20090409232307 f0549c04
+D a-tags.ads		20090409232307 bfa07446
+D a-taside.ads		20090409232307 ed6367a8
+D a-unccon.ads		20070406091342 51e09df2
+D a-uncdea.ads		20070406091342 dc667e6d
+D ada_sockets.ads	20080723100827 bead7ec5
+D c_sockets.ads		20080723100827 ae62ecd4
+D c_sockets_arch.ads	20080723100827 ae39cd95
+D concurrency.ads	20081111152635 234e1895
+D interfac.ads		20090409232307 a69cad5c
+D i-c.ads		20070406091342 bc3ef662
+D i-cstrin.ads		20090409232307 841d8a31
+D ircada.ads		20100522121454 27da6d43
+D ircada_demo.adb	20100521202056 cfbf99eb
+D keyed_lists_generic.ads  20080723100827 649cc8d8
+D lists_generic.ads	20080723100827 9d1f6824
+D lower_layer.ads	20080723100827 73b92197
+D lower_layer-inet.ads	20080723100827 12a1a879
+D lower_layer-inet-tcp.ads  20080723100827 4725e94d
+D lower_layer-inet-tcp-misc.ads  20080723100827 7dab37b5
+D lower_layer-inet-udp.ads  20080723100827 8f5fdc7b
+D lower_layer-inet-udp-uni.ads  20080723100827 5ee7f99b
+D lower_layer_tcp.ads	20080723100827 87a6f524
+D lower_layer_udp.ads	20080723100827 a3c54ba3
+D system.ads		20100510022645 15e10948
+D s-atacco.ads		20090409232307 60789a20
+D s-exctab.ads		20090409232307 5c1c61ae
+D s-finimp.ads		20090409232307 9449f4cb
+D s-finroo.ads		20090409232307 1408f9d1
+D s-linux.ads		20090409232307 ad070dbe
+D s-osinte.ads		20080408064315 b04c0edf
+D s-parame.ads		20090409232307 f32e56e9
+D s-secsta.ads		20090409232307 7bae3621
+D s-soflin.ads		20090409232307 0c6fd39d
+D s-stache.ads		20090409232307 257b3be8
+D s-stausa.ads		20090409232307 6ab7dd35
+D s-stalib.ads		20090409232307 52b793d5
+D s-stoele.ads		20090409232307 ed966df3
+D s-stoele.adb		20090409232307 e9998c78
+D s-stratt.ads		20090409232307 fef7c1da
+D s-tasinf.ads		20090409232307 268f0cd4
+D s-taspri.ads		20080408071349 5459bcd0
+D s-taprop.ads		20090409232307 25a7965c
+D s-taskin.ads		20090409232307 376ff2dd
+D s-taprob.ads		20090409232307 5e00115c
+D s-tpoben.ads		20090409232307 37be425d
+D s-tassta.ads		20090409232307 71d2b71d
+D s-traent.ads		20090409232307 bd5f2753
+D s-unstyp.ads		20090409232307 c0f9fae5
+D unchdeal.ads		20070406091342 66b7fd29
+X 1 ada.ads
+16K9*Ada 19e8 24|2r6 6r26
+X 9 a-string.ads
+16K13*Strings 35e16 24|2r10 6r30
+X 11 a-strunb.ads
+39K21*Unbounded 428e26 24|2w18 6r38
+57V13*To_Unbounded_String{42R9} 24|10r28 14r22 15r21 16r22
+X 23 ircada.ads
+6K9*ircada 70e11 24|1w6 10r3 11r3 12r16 14r5 15r5 16r5
+30r3*ServerHost{11|42R9} 24|10m10
+31i3*ServerPort{integer} 24|11m10
+43V12*Connect{boolean} 24|12r23
+46U13*Join 24|14r12
+47U13*Part 24|16r12
+49U13*Say 24|15r12
+X 24 ircada_demo.adb
+4U11*ircada_demo 4b11 19l5 19t16
+6K11 ASU=6:38 10r24 14r18 15r17 16r18
+8b3 Connected{boolean} 12m3 13r6
+

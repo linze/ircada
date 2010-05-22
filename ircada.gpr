@@ -1,0 +1,10 @@
+project Ircada is
+
+   for Source_Dirs use ("./**");
+
+   package Compiler is
+      for Default_Switches ("ada") use ("-I/opt/ll/lib");
+   end Compiler;
+
+end Ircada;
+
