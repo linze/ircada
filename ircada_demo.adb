@@ -1,5 +1,6 @@
 with ircada;
 with Ada.Strings.Unbounded;
+with Ada.Text_IO; -- TODO: Remove. Just for testing.
 
 procedure ircada_demo is
 
@@ -11,9 +12,13 @@ begin
   ircada.ServerPort := 6667;
   Connected := ircada.Connect;
   if Connected then
-    ircada.Join (ASU.To_Unbounded_String ("#testchannel"));
-    ircada.Say (ASU.To_Unbounded_String ("#testchannel"), "wololo");
-    ircada.Part (ASU.To_Unbounded_String ("#testchannel"));
+    -- Wait until MOTD is received
+    while not ircada.Connected loop
+      null;
+    end loop;
+    ircada.Join (ASU.To_Unbounded_String ("#wololo"));
+    ircada.Say (ASU.To_Unbounded_String ("#wololo"), "wololo");
+    ircada.Disconnect;
   end if;
-
+  LLU.Finalize;
 end ircada_demo;

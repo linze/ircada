@@ -39,6 +39,7 @@ package ircada is
   RealName    : ASU.Unbounded_String := ASU.To_Unbounded_String ("Guybrush Threepwood");
 
   CommandPrefix : String := "!";
+  Connected     : boolean;
 
   function Connect return boolean;
   procedure HandleMessages;
@@ -48,15 +49,19 @@ package ircada is
                   Reason  : in String := "." );
   procedure Say   (Destination : in ASU.Unbounded_String;
                    What        : in String);
+  procedure Disconnect;
 
 private
   task type IRCHandler;
   type PIRCHandler is access IRCHandler;
 
 
-  ircdEP          : LLT.End_Point;
-  ircdConnection  : aliased LLT.Connection;
-  HandlerAccess   : aliased PIRCHandler;
+  ircdEP             : LLT.End_Point;
+  ircdConnection     : aliased LLT.Connection;
+  HandlerAccess      : aliased PIRCHandler;
+  -- This will indicate whenever the application should
+  -- read from the connection or end the task.
+  ReadFromConnection : boolean;
 
   procedure Handshake;
   procedure ParsePrivMsg (IRCRawMessage : in TIRCRawMessage;
@@ -66,5 +71,6 @@ private
   procedure ParseRawString (RawString  : in out ASU.Unbounded_String;
                             IRCRawMessage : in out TIRCRawMessage);
   function IsCommand ( IRCMessage : in TIRCMessage) return boolean;
+  procedure HandleCommand ( IRCMessage : in TIRCMessage);
 
 end ircada;

@@ -12,10 +12,12 @@ package body ircada is
   function Connect return boolean is
     ListeningTask : PIRCHandler;
   begin
+    Connected := False;
     ircdEP := LLT.Build (LLU.To_IP (ASU.To_String (ServerHost)), ServerPort);
     LLT.Connect (ircdEP, ircdConnection);
     -- Create a task that will be receiving and processing all the upcoming
     -- messages.
+    ReadFromConnection := True;
     ListeningTask := new IRCHandler;
     -- Establish the nickname and send the USER line
     Handshake;
@@ -129,7 +131,8 @@ package body ircada is
     IRCRawMessage : TIRCRawMessage;
     IRCMessage    : TIRCMessage;
   begin
-    loop
+    while ReadFromConnection loop
+      Ada.Text_IO.Put_Line ("New interaction...");
       -- Catch the complete message
       ReceivedMsg := ASU.To_Unbounded_String ("");
       LineCompleted := False;
@@ -146,12 +149,13 @@ package body ircada is
       ParseRawString (ReceivedMsg, IRCRawMessage);
 
       if ASU.To_String (IRCRawMessage.Command) = "PRIVMSG" then
-        Ada.Text_IO.Put_Line ("#####");
         ParsePrivMsg (IRCRawMessage, IRCMessage);
-        Ada.Text_IO.Put_Line ("Message: " & ASU.To_String(IRCMessage.Message));
         if IsCommand (IRCMessage) then
-          Ada.Text_IO.Put_Line ("Is command");
+          HandleCommand (IRCMessage);
         end if;
+      elsif ASU.To_String (IRCRawMessage.Command) = "376" then
+        -- MOTD received. NOW we can join channels
+        Connected := True;
       end if;
 
     end loop;
@@ -170,7 +174,8 @@ package body ircada is
 
   procedure HandleCommand ( IRCMessage : in TIRCMessage) is
   begin
-    null;
+    -- TODO: Remove. Just for testing.
+    Say (IRCMessage.NickName, ASU.To_String(IRCMessage.Message));
   end HandleCommand;
 
 
@@ -207,5 +212,15 @@ package body ircada is
                   What & ACLat.CR & ACLat.LF);
 
   end Say;
+
+  procedure Disconnect is
+  begin
+    ReadFromConnection := False;
+    Connected := False;
+    -- Send QUIT message
+    String'Write (ircdConnection'Access, "QUIT"&
+                  ACLat.CR & ACLat.LF);
+    LLT.Dispose (ircdConnection);
+  end Disconnect;
 
 end ircada;
